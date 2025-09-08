@@ -43,14 +43,24 @@
 
 .faq-container {
     margin-top: 40px;
+    width: 850px;
+    min-width: 850px;
+    max-width: 850px;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .redacao-item {
     background: #ffffff;
     border-radius: 16px;
     box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-    margin: 20px auto;
-    max-width: 800px;
+    margin: 20px 0;
+    width: 100%;
     text-align: left;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);

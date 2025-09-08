@@ -5,106 +5,106 @@ import "./ThemeList.css";
 const todosOsTemas = [
   {
     id: 1,
-    titulo: "Desafios da educação no Brasil",
-    descricao: "Reflexão sobre os principais obstáculos enfrentados pelo sistema educacional brasileiro.",
+    titulo: "Neurodivergência: O Que É e Por Que Importa?",
+    descricao: "Entenda o conceito e sua importância na sociedade atual.",
     imagem: "/imagens/img1.jpg",
     link: "#"
   },
   {
     id: 2,
-    titulo: "Inclusão social e acessibilidade",
-    descricao: "A importância de políticas públicas para promover a inclusão de pessoas com deficiência.",
+    titulo: "TDAH Além dos Estereótipos",
+    descricao: "Descubra como o TDAH afeta a vida além da hiperatividade.",
     imagem: "/imagens/img2.jpg",
     link: "#"
   },
   {
     id: 3,
-    titulo: "Tecnologia e mercado de trabalho",
-    descricao: "Como a tecnologia está transformando profissões e exigindo novas habilidades.",
+    titulo: "Autismo e Comunicação: Como Incluir?",
+    descricao: "Estratégias para tornar o mundo mais acessível para autistas.",
     imagem: "/imagens/img3.jpg",
     link: "#"
   },
   {
     id: 4,
-    titulo: "Sustentabilidade e meio ambiente",
-    descricao: "Práticas sustentáveis e seu impacto na preservação dos recursos naturais.",
+    titulo: "Ansiedade e Neurodivergência: Qual a Relação?",
+    descricao: "Entenda como ansiedade e neurodivergência estão conectadas.",
     imagem: "/imagens/img4.jpg",
     link: "#"
   },
   {
     id: 5,
-    titulo: "Saúde mental na sociedade contemporânea",
-    descricao: "Os desafios da saúde mental e a importância do cuidado psicológico.",
+    titulo: "Tecnologia: Aliada ou Desafio para Neurodivergentes?",
+    descricao: "Explore os prós e contras da tecnologia na neurodivergência.",
     imagem: "/imagens/img5.jpg",
     link: "#"
   },
   {
     id: 6,
-    titulo: "Cultura digital e redes sociais",
-    descricao: "Impactos das redes sociais na comunicação e comportamento social.",
+    titulo: "Inclusão Escolar para Neurodivergentes",
+    descricao: "Como escolas podem apoiar alunos com autismo e TDAH.",
     imagem: "/imagens/img6.jpg",
     link: "#"
   },
   {
     id: 7,
-    titulo: "Inteligência Artificial e Ética",
-    descricao: "Os dilemas éticos no desenvolvimento e uso de sistemas de inteligência artificial.",
+    titulo: "Sensorialidade no Autismo: Um Mundo Único",
+    descricao: "Entenda como autistas experienciam o mundo pelos sentidos.",
     imagem: "/imagens/img7.jpg",
     link: "#"
   },
   {
     id: 8,
-    titulo: "Globalização e Economia",
-    descricao: "Como a interconexão global afeta economias locais e o mercado de trabalho.",
+    titulo: "TDAH na Vida Adulta: Desafios e Soluções",
+    descricao: "Como adultos com TDAH podem lidar com o dia a dia.",
     imagem: "/imagens/img8.jpg",
     link: "#"
   },
   {
     id: 9,
-    titulo: "Literatura Brasileira Contemporânea",
-    descricao: "Análise de obras e autores que marcam a literatura brasileira atual.",
+    titulo: "Neurodivergência e Criatividade: Uma Força Poderosa",
+    descricao: "Descubra como a neurodivergência impulsiona a inovação.",
     imagem: "/imagens/img9.jpg",
     link: "#"
   },
   {
     id: 10,
-    titulo: "Mudanças Climáticas e Sociedade",
-    descricao: "O impacto das alterações climáticas na organização social e econômica.",
+    titulo: "Autismo e Emprego: Como Incluir?",
+    descricao: "Estratégias para promover a inclusão no mercado de trabalho.",
     imagem: "/imagens/img10.jpg",
     link: "#"
   },
   {
     id: 11,
-    titulo: "Direitos Humanos no Século XXI",
-    descricao: "Desafios atuais na defesa e promoção dos direitos humanos no mundo.",
+    titulo: "TDAH e Hiperfoco: Uma Superpotência?",
+    descricao: "Como transformar o hiperfoco em uma vantagem.",
     imagem: "/imagens/img11.jpg",
     link: "#"
   },
   {
     id: 12,
-    titulo: "Política e Cidadania",
-    descricao: "O papel do cidadão na construção de uma sociedade democrática e participativa.",
+    titulo: "Saúde Mental e Neurodivergência: Cuidados Essenciais",
+    descricao: "Por que a saúde mental é crucial para neurodivergentes.",
     imagem: "/imagens/img12.jpg",
     link: "#"
   },
   {
     id: 13,
-    titulo: "Biotecnologia e Futuro da Medicina",
-    descricao: "Avanços biotecnológicos e suas implicações para o futuro da saúde humana.",
+    titulo: "TDAH: Mitos e Verdades",
+    descricao: "Desvendando os equívocos mais comuns sobre o Transtorno de Déficit de Atenção e Hiperatividade.",
     imagem: "/imagens/img13.jpg",
     link: "#"
   },
   {
     id: 14,
-    titulo: "Mobilidade Urbana Sustentável",
-    descricao: "Soluções para os desafios de transporte nas grandes cidades.",
+    titulo: "Autismo no Ambiente de Trabalho",
+    descricao: "Como empresas estão criando espaços mais inclusivos para profissionais autistas.",
     imagem: "/imagens/img14.jpg",
     link: "#"
   },
   {
     id: 15,
-    titulo: "Diversidade Cultural e Identidade",
-    descricao: "A importância da preservação e valorização das diferentes culturas.",
+    titulo: "Dislexia e Criatividade",
+    descricao: "A conexão surpreendente entre pensamento não-linear e soluções inovadoras.",
     imagem: "/imagens/img15.jpg",
     link: "#"
   }

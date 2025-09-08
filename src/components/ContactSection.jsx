@@ -19,7 +19,7 @@ export default function ContactSection() {
   return (
     <section className="contact-section" id="contact">
       <div className="container">
-        <h2>Contato</h2>
+        <h2>Fale Conosco</h2>
         <p>Tem alguma dúvida, sugestão ou feedback? Fale com a gente!</p>
         <form onSubmit={handleSubmit} id="contact-form">
           <div className="input-row">
