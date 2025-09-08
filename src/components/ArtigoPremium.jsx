@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Quiz from "./Quiz";
+import ShareModal from "./ShareModal";
 import "./ArtigoPremium.css";
 
 export default function ArtigoPremium() {
+  const [shareModalOpen, setShareModalOpen] = useState(false);
+  
+  const openShareModal = () => {
+    setShareModalOpen(true);
+  };
+  
+  const closeShareModal = () => {
+    setShareModalOpen(false);
+  };
+
   return (
     <>
       <Header />
@@ -28,9 +39,7 @@ export default function ArtigoPremium() {
             </div>
             
             <a href="#articleStart" className="scroll-down artigo-seta-flutuante">
-              <i className="fas fa-chevron-down">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
-              </i>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
             </a>
           </div>
         </section>
@@ -150,28 +159,120 @@ export default function ArtigoPremium() {
           </section>
         </main>
 
-        {/* Floating Action Buttons */}
-        <div className="floating-actions">
-          <button className="action-btn" id="shareBtn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="18" cy="5" r="3"></circle>
-              <circle cx="6" cy="12" r="3"></circle>
-              <circle cx="18" cy="19" r="3"></circle>
-              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-            </svg>
-            <span className="action-tooltip">Compartilhar</span>
-          </button>
-          <button className="action-btn back-to-top" id="backToTopBtn" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        {/* Botões flutuantes com estilo inline para garantir visibilidade */}
+        <div style={{
+          position: 'fixed',
+          bottom: '2rem',
+          right: '2rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1.5rem',
+          zIndex: 9999
+        }}>
+          {/* Botão Voltar ao Topo */}
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            style={{
+              width: '50px',
+              height: '50px',
+              borderRadius: '50%',
+              backgroundColor: '#F6B600',
+              color: '#071D3B',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              border: 'none',
+              boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              position: 'relative'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = '0 6px 15px rgba(0,0,0,0.3)';
+              e.currentTarget.querySelector('.tooltip').style.opacity = '1';
+              e.currentTarget.querySelector('.tooltip').style.right = '70px';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)';
+              e.currentTarget.querySelector('.tooltip').style.opacity = '0';
+              e.currentTarget.querySelector('.tooltip').style.right = '60px';
+            }}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#071D3B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="12" y1="19" x2="12" y2="5"></line>
               <polyline points="5 12 12 5 19 12"></polyline>
             </svg>
-            <span className="action-tooltip">Voltar ao topo</span>
+            <div style={{
+              position: 'absolute',
+              right: '60px',
+              backgroundColor: '#071D3B',
+              color: 'white',
+              padding: '0.5rem 1rem',
+              borderRadius: '6px',
+              fontSize: '0.8rem',
+              whiteSpace: 'nowrap',
+              opacity: '0',
+              pointerEvents: 'none',
+              transition: 'all 0.3s ease'
+            }} className="tooltip">Voltar ao topo</div>
+          </button>
+
+          {/* Botão Compartilhar */}
+          <button 
+            onClick={openShareModal}
+            style={{
+              width: '50px',
+              height: '50px',
+              borderRadius: '50%',
+              backgroundColor: '#071D3B',
+              color: 'white',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              border: 'none',
+              boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              position: 'relative'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = '0 6px 15px rgba(0,0,0,0.3)';
+              e.currentTarget.querySelector('.tooltip').style.opacity = '1';
+              e.currentTarget.querySelector('.tooltip').style.right = '70px';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)';
+              e.currentTarget.querySelector('.tooltip').style.opacity = '0';
+              e.currentTarget.querySelector('.tooltip').style.right = '60px';
+            }}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+              <polyline points="16 6 12 2 8 6"></polyline>
+              <line x1="12" y1="2" x2="12" y2="15"></line>
+            </svg>
+            <div style={{
+              position: 'absolute',
+              right: '60px',
+              backgroundColor: '#071D3B',
+              color: 'white',
+              padding: '0.5rem 1rem',
+              borderRadius: '6px',
+              fontSize: '0.8rem',
+              whiteSpace: 'nowrap',
+              opacity: '0',
+              pointerEvents: 'none',
+              transition: 'all 0.3s ease'
+            }} className="tooltip">Compartilhar</div>
           </button>
         </div>
       </main>
       <Footer />
+      <ShareModal isOpen={shareModalOpen} onClose={closeShareModal} />
     </>
   );
 }
