@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./ThemeList.css";
+import { useNavigate } from "react-router-dom";
 
 // Exemplo de dados com as imagens reais
 const todosOsTemas = [
@@ -113,6 +114,7 @@ const todosOsTemas = [
 export default function ThemeList() {
   const [mostrarTodos, setMostrarTodos] = useState(false);
   const temasVisiveis = mostrarTodos ? todosOsTemas : todosOsTemas.slice(0, 6);
+  const navigate = useNavigate();
   
   const handleVerMais = () => {
     setMostrarTodos(true);
@@ -138,7 +140,12 @@ export default function ThemeList() {
               <div className="tema-content">
                 <h3>{tema.titulo}</h3>
                 <p>{tema.descricao}</p>
-                <a href={tema.link} className="btn-tema">Explorar tema</a>
+                <button
+                  className="btn-tema"
+                  onClick={() => navigate('/artigo-premium')}
+                >
+                  Explorar tema
+                </button>
               </div>
             </div>
           ))}
