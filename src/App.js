@@ -20,7 +20,6 @@ function ScrollToTop() {
 
   return null;
 }
-
 function App() {
   useEffect(() => {
     // ...existing code...
