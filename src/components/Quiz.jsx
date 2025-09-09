@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./Quiz.css";
 
 // Componente de Quiz Interativo
 function Quiz() {

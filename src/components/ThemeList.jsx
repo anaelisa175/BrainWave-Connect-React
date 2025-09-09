@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import "./ThemeList.css";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 
 // Exemplo de dados com as imagens reais
 const todosOsTemas = [
@@ -114,7 +113,7 @@ const todosOsTemas = [
 export default function ThemeList() {
   const [mostrarTodos, setMostrarTodos] = useState(false);
   const temasVisiveis = mostrarTodos ? todosOsTemas : todosOsTemas.slice(0, 6);
-  const navigate = useNavigate();
+  const router = useRouter();
   
   const handleVerMais = () => {
     setMostrarTodos(true);
@@ -144,7 +143,7 @@ export default function ThemeList() {
                   className="btn-tema"
                   onClick={() => {
                     // Navegar para a página e garantir scroll ao topo
-                    navigate('/artigo-premium');
+                    router.push('/artigo-premium');
                     // Backup: scroll ao topo após a navegação
                     setTimeout(() => {
                       window.scrollTo(0, 0);

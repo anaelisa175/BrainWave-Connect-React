@@ -3,7 +3,6 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Quiz from "./Quiz";
 import ShareModal from "./ShareModal";
-import "./ArtigoPremium.css";
 
 export default function ArtigoPremium() {
   const [shareModalOpen, setShareModalOpen] = useState(false);

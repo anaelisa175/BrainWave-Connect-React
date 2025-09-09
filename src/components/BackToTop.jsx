@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./BackToTop.css";
 
 export default function BackToTop() {
   const [visivel, setVisivel] = useState(false);
