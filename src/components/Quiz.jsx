@@ -1,4 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+
+// Função para garantir a letra correta
+const getLetter = (index) => {
+  const letters = ['A', 'B', 'C', 'D'];
+  return letters[index] || 'A';
+};
 
 // Componente de Quiz Interativo
 function Quiz() {
@@ -7,6 +13,7 @@ function Quiz() {
   const [showResult, setShowResult] = useState(false);
   const [answered, setAnswered] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
+  const optionRefs = useRef([]);
   
   const questions = [
     {
@@ -70,6 +77,22 @@ function Quiz() {
     setAnswered(false);
     setSelectedOption(null);
   };
+
+  // Força a correção das letras após renderização
+  useEffect(() => {
+    const fixLetters = () => {
+      const optionLetters = document.querySelectorAll('.option-letter');
+      optionLetters.forEach((el, index) => {
+        if (el && el.textContent && el.textContent.startsWith('Um')) {
+          el.textContent = getLetter(index) + '-';
+        }
+      });
+    };
+    
+    fixLetters();
+    // Executa novamente após um pequeno delay para garantir
+    setTimeout(fixLetters, 100);
+  }, [currentQuestion, answered]);
   
   return (
     <>
@@ -77,25 +100,30 @@ function Quiz() {
         <div className="quiz-question active">
           <h3>{questions[currentQuestion].question}</h3>
           <div className="quiz-options">
-            {questions[currentQuestion].options.map((option, index) => (
-              <button 
-                key={index} 
-                onClick={() => handleAnswer(option.isCorrect, index)}
-                className={`quiz-option ${
-                  answered 
-                    ? option.isCorrect 
-                      ? "correct" 
-                      : selectedOption === index 
-                        ? "incorrect" 
-                        : ""
-                    : ""
-                }`}
-                disabled={answered}
-              >
-                <span className="option-letter">{String.fromCharCode(65 + index)}-</span>
-                <span className="option-text">{option.text}</span>
-              </button>
-            ))}
+            {questions[currentQuestion].options.map((option, index) => {
+              const letter = ['A', 'B', 'C', 'D'][index];
+              return (
+                <button 
+                  key={`${currentQuestion}-${index}`} 
+                  onClick={() => handleAnswer(option.isCorrect, index)}
+                  className={`quiz-option ${
+                    answered 
+                      ? option.isCorrect 
+                        ? "correct" 
+                        : selectedOption === index 
+                          ? "incorrect" 
+                          : ""
+                      : ""
+                  }`}
+                  disabled={answered}
+                >
+                  <span className="option-letter" key={`letter-${currentQuestion}-${index}`}>
+                    {letter}-
+                  </span>
+                  <span className="option-text">{option.text}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
       ) : (

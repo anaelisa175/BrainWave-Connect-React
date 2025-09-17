@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useRouter } from "next/router";
+import Link from "next/link";
+import Head from "next/head";
 
 // Exemplo de dados com as imagens reais
 const todosOsTemas = [
@@ -8,42 +9,42 @@ const todosOsTemas = [
     titulo: "Neurodivergência: O Que É e Por Que Importa?",
     descricao: "Entenda o conceito e sua importância na sociedade atual.",
     imagem: "/imagens/img1.jpg",
-    link: "#"
+    link: "/artigo-premium"
   },
   {
     id: 2,
     titulo: "TDAH Além dos Estereótipos",
-    descricao: "Descubra como o TDAH afeta a vida além da hiperatividade.",
+    descricao: "Descubra a verdade sobre o TDAH e como superar os mitos e estereótipos.",
     imagem: "/imagens/img2.jpg",
-    link: "#"
+    link: "/tdah-estereotipos"
   },
   {
     id: 3,
     titulo: "Autismo e Comunicação: Como Incluir?",
     descricao: "Estratégias para tornar o mundo mais acessível para autistas.",
     imagem: "/imagens/img3.jpg",
-    link: "#"
+    link: "/autismo-comunicacao"
   },
   {
     id: 4,
     titulo: "Ansiedade e Neurodivergência: Qual a Relação?",
     descricao: "Entenda como ansiedade e neurodivergência estão conectadas.",
     imagem: "/imagens/img4.jpg",
-    link: "#"
+    link: "/ansiedade-neurodivergencia"
   },
   {
     id: 5,
     titulo: "Tecnologia: Aliada ou Desafio para Neurodivergentes?",
-    descricao: "Explore os prós e contras da tecnologia na neurodivergência.",
+    descricao: "Como a tecnologia impacta pessoas neurodivergentes.",
     imagem: "/imagens/img5.jpg",
-    link: "#"
+    link: "/tecnologia-desafio"
   },
   {
     id: 6,
     titulo: "Inclusão Escolar para Neurodivergentes",
     descricao: "Como escolas podem apoiar alunos com autismo e TDAH.",
     imagem: "/imagens/img6.jpg",
-    link: "#"
+    link: "/inclusao-escolar"
   },
   {
     id: 7,
@@ -113,7 +114,6 @@ const todosOsTemas = [
 export default function ThemeList() {
   const [mostrarTodos, setMostrarTodos] = useState(false);
   const temasVisiveis = mostrarTodos ? todosOsTemas : todosOsTemas.slice(0, 6);
-  const router = useRouter();
   
   const handleVerMais = () => {
     setMostrarTodos(true);
@@ -126,32 +126,46 @@ export default function ThemeList() {
   };
 
   return (
-    <section className="temas-populares">
-      <div className="container">
+    <>
+      <Head>
+        {/* Preload das páginas principais para melhor performance */}
+        <link rel="prefetch" href="/artigo-premium" />
+        <link rel="prefetch" href="/tdah-estereotipos" />
+        <link rel="prefetch" href="/autismo-comunicacao" />
+        <link rel="prefetch" href="/ansiedade-neurodivergencia" />
+        <link rel="prefetch" href="/tecnologia-desafio" />
+        <link rel="prefetch" href="/inclusao-escolar" />
+      </Head>
+      <section className="temas-populares">
+        <div className="container">
         <h2>Temas Populares</h2>
         <br></br>
         <div className="temas-grid">
-          {temasVisiveis.map((tema) => (
+          {temasVisiveis.map((tema, index) => (
             <div className="tema-card" key={tema.id}>
               <div className="tema-img">
-                <img src={tema.imagem} alt={tema.titulo} />
+                <img 
+                  src={tema.imagem} 
+                  alt={tema.titulo} 
+                  loading={index < 6 ? "eager" : "lazy"}
+                  fetchPriority={index < 3 ? "high" : "auto"}
+                />
               </div>
               <div className="tema-content">
                 <h3>{tema.titulo}</h3>
                 <p>{tema.descricao}</p>
-                <button
+                <Link 
+                  href={tema.link === '#' ? '/artigo-premium' : tema.link}
+                  prefetch={true}
                   className="btn-tema"
                   onClick={() => {
-                    // Navegar para a página e garantir scroll ao topo
-                    router.push('/artigo-premium');
-                    // Backup: scroll ao topo após a navegação
-                    setTimeout(() => {
-                      window.scrollTo(0, 0);
-                    }, 100);
+                    console.log('Navegando para:', tema.titulo);
+                    // Scroll ao topo será feito automaticamente pelo Next.js
+                    window.scrollTo(0, 0);
                   }}
                 >
                   Explorar tema
-                </button>
+                </Link>
               </div>
             </div>
           ))}
@@ -170,7 +184,8 @@ export default function ThemeList() {
             }}>Mostrar menos</a>
           )}
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   );
 }

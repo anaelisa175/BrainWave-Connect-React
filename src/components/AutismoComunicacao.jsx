@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import Quiz from "./Quiz";
 import ShareModal from "./ShareModal";
 
-export default function ArtigoPremium() {
+export default function AutismoComunicacao() {
   const [shareModalOpen, setShareModalOpen] = useState(false);
   
   // Scroll para o topo quando o componente for montado
@@ -24,21 +24,21 @@ export default function ArtigoPremium() {
     <>
       <Header />
       <main className="artigo-main">
-        {/* Hero Section - Conteúdo modificado */}
+        {/* Hero Section */}
         <section className="hero" id="heroSection">
-          <img src="/imagens/img13.jpg" alt="Cérebro humano ilustrado" className="hero-bg" loading="lazy" />
+          <img src="/imagens/img3.jpg" alt="Autismo e comunicação" className="hero-bg" loading="lazy" />
           
           <div className="hero-content animate__animated animate__fadeIn">
-            <h1 className="hero-title">Neurodivergência: O Que É e Por Que Importa?</h1>
+            <h1 className="hero-title">Autismo e Comunicação: Como Incluir e Compreender Melhor</h1>
             
             <div className="hero-meta">
               <div className="meta-item">
                 <i className="meta-icon">📅</i>
-                <span>junho 15, 2025</span>
+                <span>setembro 15, 2025</span>
               </div>
               <div className="meta-item">
                 <i className="meta-icon">🔖</i>
-                <span>Neurociência</span>
+                <span>Inclusão e Acessibilidade</span>
               </div>
             </div>
             
@@ -73,57 +73,57 @@ export default function ArtigoPremium() {
           </div>
         </section>
         
-        {/* Main Content - Conteúdo modificado */}
+        {/* Main Content */}
         <main className="main-content" id="articleStart">
           <div className="breadcrumb">
             <a href="#">Início</a>
             <span className="divider">/</span>
             <a href="#">Artigos</a>
             <span className="divider">/</span>
-            <span>Neurodivergência: O Que É e Por Que Importa?</span>
+            <span>Autismo e Comunicação: Como Incluir?</span>
           </div>
           
           <article className="article-content">
-            <p>A neurodivergência é um conceito que reconhece e valoriza as diferenças neurológicas entre as pessoas, entendendo que condições como autismo, TDAH, dislexia e outras não são necessariamente "distúrbios" a serem curados, mas variações naturais do cérebro humano. Essa perspectiva revolucionária está transformando a forma como entendemos a diversidade cognitiva e sua importância para a sociedade.</p>
+            <p>A comunicação é uma ponte fundamental para a inclusão de pessoas autistas em nossa sociedade. Compreender as diferentes formas de comunicação no espectro autista e desenvolver estratégias inclusivas não é apenas uma questão de acessibilidade, mas de enriquecimento mútuo. Cada pessoa autista possui uma forma única de perceber e expressar-se no mundo, e nossa responsabilidade é criar espaços onde essas diferenças sejam não apenas aceitas, mas celebradas.</p>
             
-            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ilustração de conexões neurais" className="animate__animated" id="articleImage1" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pessoa autista se comunicando" className="animate__animated" id="articleImage1" loading="lazy" />
             
-            <p>O termo "neurodivergente" foi cunhado pela socióloga Judy Singer na década de 1990 e ganhou força com o movimento de direitos dos autistas. Segundo pesquisas atuais, estima-se que 15-20% da população mundial seja neurodivergente. Esses indivíduos muitas vezes possuem formas únicas de processar informações, resolver problemas e interagir com o mundo, trazendo perspectivas valiosas que podem beneficiar toda a sociedade.</p>
+            <p>Pessoas autistas podem se comunicar de diversas formas: através da fala, comunicação não-verbal, linguagem de sinais, sistemas de comunicação alternativa (CAA), ou uma combinação dessas modalidades. Algumas pessoas são verbais, outras são parcialmente verbais, e algumas são não-verbais - mas isso não significa que não têm nada a dizer. A comunicação vai muito além das palavras faladas.</p>
             
             <div className="highlight-box animate__animated" id="highlightBox">
-              <p>"A neurodivergência não é um defeito, mas uma diferença que pode ser uma força poderosa quando reconhecida e apoiada adequadamente." - Dr. Thomas Armstrong, Autor de "O Poder da Neurodiversidade"</p>
+              <p>"Não ser verbal não significa não ter nada a dizer. Significa que você precisa ouvir de forma diferente." - Ido Kedar, Autor autista</p>
             </div>
             
-            <p>No ambiente educacional, a compreensão da neurodivergência está levando a abordagens mais inclusivas. Em vez de tentar forçar todos os alunos a aprender da mesma forma, escolas progressistas estão adotando métodos que respeitam os diferentes estilos de aprendizagem. Isso não só beneficia estudantes neurodivergentes, mas cria um ambiente mais rico para todos.</p>
+            <p>A comunicação aumentativa e alternativa (CAA) tem revolucionado a forma como pessoas autistas não-verbais ou com dificuldades de fala podem expressar seus pensamentos, sentimentos e necessidades. Desde aplicativos em tablets até quadros de comunicação por imagens, essas ferramentas abrem portas para conexões genuínas e participação plena na sociedade.</p>
             
-            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Crianças aprendendo de formas diferentes" className="animate__animated" id="articleImage2" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tecnologia assistiva para comunicação" className="animate__animated" id="articleImage2" loading="lazy" />
             
-            <p>No local de trabalho, empresas inovadoras estão descobrindo que equipes neurodiversas são mais criativas e resolvem problemas de forma mais eficaz. Grandes nomes da tecnologia como Microsoft, SAP e IBM têm programas específicos para recrutar talentos neurodivergentes, reconhecendo seu potencial único para inovação e pensamento fora da caixa.</p>
+            <p>No ambiente educacional, estratégias inclusivas de comunicação beneficiam não apenas estudantes autistas, mas toda a turma. Usar suportes visuais, dar tempo extra para processamento, oferecer alternativas de participação e ensinar colegas sobre diferentes estilos de comunicação cria um ambiente mais acolhedor e eficaz para todos.</p>
             
-            <p>No entanto, os desafios permanecem. Muitos neurodivergentes ainda enfrentam estigma, diagnóstico tardio e falta de acomodações adequadas. A conscientização sobre neurodiversidade é crucial para criar uma sociedade verdadeiramente inclusiva que valorize todas as formas de pensar e ser.</p>
+            <p>No local de trabalho, pequenos ajustes podem fazer uma grande diferença. Comunicação clara por escrito, ambientes com menos estímulos sensoriais, flexibilidade em métodos de apresentação e compreensão sobre diferentes estilos de interação social podem transformar o potencial de colaboração e produtividade.</p>
           </article> 
           
           <section className="proposta-section animate__animated" id="propostaSection">
-            <h2 className="proposta-title">Curiosidades sobre Neurodivergência</h2>
+            <h2 className="proposta-title">Estratégias para Comunicação Inclusiva</h2>
             <div className="curiosidades-list">
               <div className="curiosidade-item">
-                <h3>1. Grandes mentes neurodivergentes</h3>
-                <p>Muitos gênios da história como Albert Einstein, Mozart e Nikola Tesla apresentavam características neurodivergentes que podem ter contribuído para suas visões únicas.</p>
+                <h3>1. Comunicação Clara e Direta</h3>
+                <p>Use linguagem concisa, evite metáforas complexas e seja específico sobre expectativas. A comunicação literal é frequentemente preferida por pessoas autistas.</p>
               </div>
               
               <div className="curiosidade-item">
-                <h3>2. Habilidades especiais</h3>
-                <p>Pessoas neurodivergentes frequentemente desenvolvem "superpoderes" como memória excepcional, atenção a detalhes ou pensamento hiperfocado em áreas de interesse.</p>
+                <h3>2. Suportes Visuais</h3>
+                <p>Incorpore imagens, gráficos, cronogramas visuais e sistemas de símbolos. Muitas pessoas autistas processam informações visuais mais facilmente que auditivas.</p>
               </div>
               
               <div className="curiosidade-item">
-                <h3>3. Diversidade no espectro</h3>
-                <p>Não existem dois neurodivergentes iguais - cada pessoa tem um perfil único de habilidades e desafios, mesmo dentro da mesma condição.</p>
+                <h3>3. Tempo de Processamento</h3>
+                <p>Permita tempo extra para resposta e evite pressionar por respostas imediatas. O processamento pode levar mais tempo, mas as respostas são frequentemente bem elaboradas.</p>
               </div>
               
               <div className="curiosidade-item">
-                <h3>4. Benefícios evolutivos</h3>
-                <p>Alguns cientistas acreditam que a neurodivergência foi crucial para a evolução humana, trazendo pensadores inovadores e solucionadores de problemas.</p>
+                <h3>4. Múltiplas Formas de Expressão</h3>
+                <p>Ofereça diferentes canais de comunicação: escrita, digital, artística ou através de tecnologia assistiva. A diversidade de opções aumenta a participação.</p>
               </div>
             </div>
           </section>
@@ -132,15 +132,15 @@ export default function ArtigoPremium() {
           <section className="conclusao-section animate__animated">
             <h2 className="proposta-title">Conclusão</h2>
             <div className="conclusao-content">
-              <p>A neurodivergência representa uma parte essencial da diversidade humana, oferecendo perspectivas únicas e habilidades valiosas para nossa sociedade. Como vimos neste artigo, compreender e valorizar essas diferenças neurológicas não é apenas uma questão de inclusão, mas de enriquecimento coletivo.</p>
+              <p>A verdadeira inclusão começa quando paramos de tentar "normalizar" pessoas autistas e começamos a adaptar nossos ambientes e métodos de comunicação para acolher a diversidade. Cada pessoa autista tem perspectivas únicas e valiosas para compartilhar - nossa responsabilidade é criar as condições para que essas vozes sejam ouvidas.</p>
               
-              <p>À medida que avançamos em nossa compreensão do cérebro humano, torna-se cada vez mais claro que a neurodiversidade é um ativo, não um déficit. Criar ambientes educacionais e profissionais que acolham e aproveitem essas diferenças é um desafio que vale a pena enfrentar.</p>
+              <p>A comunicação inclusiva não é apenas sobre técnicas e ferramentas - é sobre mudança de mentalidade. É sobre reconhecer que diferença não é deficiência, e que a neurodiversidade enriquece nossas comunidades, escolas e locais de trabalho de formas que ainda estamos descobrindo.</p>
               
               <div className="highlight-box">
-                <p>"A verdadeira medida de qualquer sociedade pode ser encontrada em como ela trata seus membros mais diferentes." - Adaptado de Mahatma Gandhi</p>
+                <p>"Quando você conhece uma pessoa autista, você conhece uma pessoa autista. Cada indivíduo no espectro é único, com suas próprias fortalezas e desafios." - Dr. Stephen Shore</p>
               </div>
               
-              <p>Que este artigo sirva como ponto de partida para reflexões e ações mais inclusivas. A neurodivergência não é algo a ser 'consertado', mas sim compreendido, respeitado e celebrado como parte do rico espectro da experiência humana.</p>
+              <p>Vamos construir pontes de comunicação que honrem a diversidade, celebrem as diferenças e criem espaços onde cada pessoa possa contribuir com seus dons únicos para nossa sociedade compartilhada.</p>
             </div>
           </section>
 
@@ -148,7 +148,6 @@ export default function ArtigoPremium() {
           <section className="quiz-section animate__animated">
             <h2 className="proposta-title">Teste Seu Conhecimento</h2>
             <div className="quiz-container">
-              {/* Quiz com React Hooks para gerenciar estado */}
               <Quiz />
             </div>
           </section>
@@ -157,38 +156,38 @@ export default function ArtigoPremium() {
           <section className="artigos-sugeridos animate__animated" id="artigosSugeridos">
             <h2 className="proposta-title">Continue Explorando</h2>
             <div className="sugeridos-grid">
+              <div className="artigo-sugerido" onClick={() => window.location.href='/artigo-premium'}>
+                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Neurodivergência" loading="lazy" />
+                <h3>Neurodivergência</h3>
+                <p>Compreendendo e valorizando as diferenças neurológicas na sociedade atual.</p>
+                <span className="leia-mais">Ler artigo →</span>
+              </div>
+              
               <div className="artigo-sugerido" onClick={() => window.location.href='/tdah-estereotipos'}>
                 <img src="https://t3.ftcdn.net/jpg/08/34/96/16/240_F_834961628_1JgTl2RHCXvRbicYjGuTgNtozShtRYRh.jpg" alt="TDAH" loading="lazy" />
                 <h3>TDAH: Além dos Estereótipos</h3>
-                <p>Desvendando os mitos e descobrindo a verdade sobre o Transtorno de Déficit de Atenção e Hiperatividade.</p>
+                <p>Desvendando os mitos e descobrindo a verdade sobre o TDAH.</p>
                 <span className="leia-mais">Ler artigo →</span>
               </div>
               
               <div className="artigo-sugerido" onClick={() => window.location.href='#'}>
-                <img src="https://t3.ftcdn.net/jpg/03/34/03/28/240_F_334032893_Xd0qQrgaj2V2ohBLIXXcMRcAJqsjTrXq.jpg" alt="Autismo" loading="lazy" />
-                <h3>Autismo no Ambiente de Trabalho</h3>
-                <p>Como empresas estão criando espaços mais inclusivos para profissionais autistas.</p>
-                <span className="leia-mais">Ler artigo →</span>
-              </div>
-              
-              <div className="artigo-sugerido" onClick={() => window.location.href='/inteligencia-emocional'}>
-                <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Inteligência Emocional" loading="lazy" />
-                <h3>Inteligência Emocional</h3>
-                <p>Como desenvolver suas habilidades emocionais e transformar sua mente através da neuroplasticidade.</p>
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Tecnologia" loading="lazy" />
+                <h3>Tecnologia e Neurodiversidade</h3>
+                <p>Como a tecnologia pode ser aliada na inclusão de neurodivergentes.</p>
                 <span className="leia-mais">Ler artigo →</span>
               </div>
 
               <div className="artigo-sugerido" onClick={() => window.location.href='#'}>
-                <img src="https://t4.ftcdn.net/jpg/08/63/37/13/240_F_863371344_eaAoEq3Tt9P91wHZOaK8gaAKdDQNTfRb.jpg" alt="Neurodiversidade" loading="lazy" />
-                <h3>Neurodiversidade na Prática</h3>
-                <p>Como implementar estratégias inclusivas no dia a dia.</p>
+                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Inclusão Escolar" loading="lazy" />
+                <h3>Inclusão Escolar</h3>
+                <p>Estratégias para criar ambientes educacionais verdadeiramente inclusivos.</p>
                 <span className="leia-mais">Ler artigo →</span>
               </div>
             </div>
           </section>
         </main>
 
-        {/* Botões flutuantes com estilo inline para garantir visibilidade */}
+        {/* Botões flutuantes */}
         <div style={{
           position: 'fixed',
           bottom: '2rem',
