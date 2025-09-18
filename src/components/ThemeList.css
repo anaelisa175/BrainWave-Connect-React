@@ -103,6 +103,7 @@
 }
 
 .btn-tema {
+    display: inline-block;
     padding: 8px 18px;
     background-color: #F6B600;
     color: #071D3B;
@@ -113,12 +114,15 @@
     transition: all 0.3s;
     align-self: flex-start;
     border: 2px solid #F6B600;
+    cursor: pointer;
 }
 
 .btn-tema:hover {
-    background-color: #071D3B;
-    color: #F6B600;
-    border-color: #071D3B;
+    background-color: #F6B600;
+    color: #071D3B;
+    border-color: #F6B600;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(246, 182, 0, 0.3);
 }
 
 .btn-ver-mais {

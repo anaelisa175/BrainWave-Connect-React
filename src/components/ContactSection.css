@@ -107,12 +107,12 @@
     color: #071D3B; /* Azul escuro */
     border: none;
     padding: 12px 40px;
-    border-radius: 20px;
+    border-radius: 10px;
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(246, 182, 0, 0.3);
+    
     margin-top: 20px;
     width: auto;
     align-self: center;
