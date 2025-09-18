@@ -1,19 +1,24 @@
 .search-section {
-    background: #f8f9fa;
-    padding: 60px 0 30px 0;
+    background: #002147;
+    padding: 60px 20px 30px;
     text-align: center;
     margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .texto-pesquisa h2 {
     font-family: 'Montserrat', sans-serif;
     font-size: 2rem;
-    color: #071D3B;
+    color: #ffffff;
     margin-bottom: 10px;
 }
 
 .texto-pesquisa p {
-    color: #3E92CC;
+    color: #FFB703;
     font-size: 1.1rem;
     margin-bottom: 30px;
 }
@@ -22,12 +27,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 500px;
+    max-width: 800px;
+    width: 83%;
     margin: 0 auto;
     background: #fff;
     border-radius: 30px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    padding: 5px 10px;
+    padding: 8px 20px;
+    position: relative;
+    right: 50px;
 }
 
 .input-container input {
@@ -54,7 +62,7 @@
 }
 
 .input-container button:hover {
-    background: #3E92CC;
+    background: #FFB703;
 }
 
 .search-icon {
