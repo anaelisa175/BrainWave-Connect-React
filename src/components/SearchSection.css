@@ -5,38 +5,78 @@
     margin-top: 80px;
 }
 
+.search-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.texto-pesquisa {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
 .texto-pesquisa h2 {
     font-family: 'Montserrat', sans-serif;
     font-size: 2rem;
     color: #071D3B;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .texto-pesquisa p {
     color: #3E92CC;
     font-size: 1.1rem;
-    margin-bottom: 30px;
+    margin-bottom: 0;
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-wrapper {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    text-align: center;
+    padding: 0 20px;
+    margin: 0 auto;
 }
 
 .input-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     max-width: 500px;
-    margin: 0 auto;
+    width: 100%;
     background: #fff;
     border-radius: 30px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    padding: 5px 10px;
+    padding: 5px 5px 5px 20px;
+    position: relative;
+    box-sizing: border-box;
+    margin: 0 auto !important;
+    margin-right: 0 !important;
 }
 
 .input-container input {
     border: none;
     outline: none;
-    padding: 12px 18px;
+    padding: 12px 0;
     font-size: 1rem;
     border-radius: 30px;
     flex: 1;
+    background: transparent;
+    color: #333;
+}
+
+.input-container input::placeholder {
+    color: #999;
 }
 
 .input-container button {
@@ -45,19 +85,62 @@
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    margin-left: 8px;
+    margin-left: 10px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.3s;
+    transition: background 0.3s ease;
+    flex-shrink: 0;
 }
 
 .input-container button:hover {
     background: #3E92CC;
 }
 
-.search-icon {
-    color: #071D3B;
+.input-container button i {
+    color: #fff;
     font-size: 1.2rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .search-section {
+        padding: 40px 0 20px 0;
+        margin-top: 60px;
+    }
+    
+    .search-section .container {
+        padding: 0 15px;
+    }
+    
+    .texto-pesquisa h2 {
+        font-size: 1.6rem;
+    }
+    
+    .texto-pesquisa p {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+    
+    .input-container {
+        max-width: 95%;
+        margin: 0 auto;
+        padding: 5px 5px 5px 15px;
+    }
+    
+    .input-container input {
+        padding: 10px 0;
+        font-size: 0.9rem;
+    }
+    
+    .input-container button {
+        width: 35px;
+        height: 35px;
+        margin-left: 8px;
+    }
+    
+    .input-container button i {
+        font-size: 1rem;
+    }
 }
