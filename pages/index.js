@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import Header from "../src/components/Header";
-import SearchSection from "../src/components/SearchSection";
-import ThemeList from "../src/components/ThemeList";
-import RedacaoFAQ from "../src/components/RedacaoFAQ";
-import ContactSection from "../src/components/ContactSection";
-import Footer from "../src/components/Footer";
-import BackToTop from "../src/components/BackToTop";
+import Header from "../src/components/layout/Header";
+import SearchSection from "../src/components/sections/SearchSection";
+import ThemeList from "../src/components/sections/ThemeList";
+import RedacaoFAQ from "../src/components/sections/RedacaoFAQ";
+import ContactSection from "../src/components/sections/ContactSection";
+import Footer from "../src/components/layout/Footer";
+import BackToTop from "../src/components/ui/BackToTop";
 
 export default function Home() {
   const router = useRouter();
