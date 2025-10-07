@@ -64,6 +64,7 @@ export default function Header() {
           <a href="#">Sobre</a>
           <a href="#">Recursos</a>
           <a href="#">Fóruns</a>
+          <a href="/depoimentos">Depoimentos</a>
           <a href="#">Jogos</a>
           <a href="#">Contato</a>
         </nav>
