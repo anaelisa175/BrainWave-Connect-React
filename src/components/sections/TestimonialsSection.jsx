@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const depoimentosData = [
   // Autismo
@@ -151,15 +151,15 @@ const depoimentosData = [
     profissao: "Cientista de Dados",
     destaque: true
   },
-  {
+ {
     id: 16,
-    nome: "Marcos Pereira",
-    idade: 25,
+    nome: "Renata Souza",
+    idade: 29,
     condicao: "Síndrome de Asperger",
-    texto: "Através das atividades da comunidade, consegui fazer amizades genuínas e desenvolver relacionamentos mais profundos e significativos.",
-    foto: "/imagens/img16.jpg",
-    profissao: "Desenvolvedor Frontend",
-    destaque: false
+    texto: "A plataforma me ajudou a entender melhor as nuances sociais e desenvolver estratégias para navegar em situações sociais complexas no trabalho.",
+    foto: "/imagens/img15.jpg",
+    profissao: "Cientista de Dados",
+    destaque: true
   }
 ];
 
@@ -171,6 +171,33 @@ const categoriasFilters = [
   { id: 'ansiedade', label: 'Ansiedade Social' },
   { id: 'asperger', label: 'Síndrome de Asperger' }
 ];
+
+// Componente de imagem otimizada
+const OptimizedImage = ({ src, alt, className, ...props }) => {
+  const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
+
+  const handleLoad = () => {
+    setLoaded(true);
+  };
+
+  const handleError = () => {
+    setError(true);
+    setLoaded(true);
+  };
+
+  return (
+    <img 
+      src={error ? "/imagens/img1.jpg" : src}
+      alt={alt}
+      className={`${className} ${!loaded ? 'loading' : ''}`}
+      onLoad={handleLoad}
+      onError={handleError}
+      loading="lazy"
+      {...props}
+    />
+  );
+};
 
 export default function TestimonialsSection() {
   const [filtroAtivo, setFiltroAtivo] = useState('todos');
@@ -200,34 +227,56 @@ export default function TestimonialsSection() {
     setDepoimentoExpandido(depoimentoExpandido === id ? null : id);
   };
 
+  const handleFilterClick = (filterId) => {
+    setFiltroAtivo(filterId);
+    
+    // Scroll suave para o título das histórias em destaque
+    setTimeout(() => {
+      if (typeof window !== 'undefined') {
+        const titleElement = document.getElementById('featured-stories-title');
+        if (titleElement) {
+          const rect = titleElement.getBoundingClientRect();
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const targetPosition = rect.top + scrollTop - 90; // 90px de offset para mostrar o título completo
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    }, 200); // Aumentado para 200ms para dar tempo do conteúdo atualizar
+  };
+
   const depoimentosFiltrados = filtrarDepoimentos();
 
   return (
     <section className="testimonials-section">
-      {/* Header da Seção */}
-      <div className="testimonials-header">
-        <h1>Depoimentos da Nossa Comunidade</h1>
-        <p>Conheça as histórias inspiradoras de pessoas que encontraram apoio, compreensão e crescimento em nossa plataforma.</p>
-      </div>
-
-      {/* Filtros */}
+      {/* Header da Seção - agora dentro do card de filtros */}
       <div className="testimonials-filters">
-        {categoriasFilters.map(categoria => (
-          <button 
-            key={categoria.id}
-            className={`filter-btn ${filtroAtivo === categoria.id ? 'active' : ''}`}
-            onClick={() => setFiltroAtivo(categoria.id)}
-          >
-            {categoria.label}
-          </button>
-        ))}
+        <div className="testimonials-header-card">
+          <h1>Depoimentos da Nossa Comunidade</h1>
+          <p>Conheça as histórias inspiradoras de pessoas que encontraram apoio, compreensão e crescimento em nossa plataforma.</p>
+        </div>
+        
+        <div className="filters-container">
+          {categoriasFilters.map(categoria => (
+            <button 
+              key={categoria.id}
+              className={`filter-btn ${filtroAtivo === categoria.id ? 'active' : ''}`}
+              onClick={() => handleFilterClick(categoria.id)}
+            >
+              {categoria.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Container de Depoimentos */}
-      <div className="testimonials-container">
+      <div id="testimonials-stories" className="testimonials-container">
         {/* Depoimentos em Destaque */}
         <div className="featured-testimonials">
-          <h2>
+          <h2 id="featured-stories-title">
             {filtroAtivo === 'todos' 
               ? 'Histórias em Destaque' 
               : `Histórias em Destaque - ${categoriasFilters.find(c => c.id === filtroAtivo)?.label || 'Categoria'}`
@@ -240,7 +289,10 @@ export default function TestimonialsSection() {
               .map(depoimento => (
                 <div key={depoimento.id} className="featured-testimonial-card">
                   <div className="testimonial-photo">
-                    <img src={depoimento.foto} alt={depoimento.nome} />
+                    <OptimizedImage 
+                      src={depoimento.foto} 
+                      alt={depoimento.nome}
+                    />
                     <div className="condition-badge">{depoimento.condicao}</div>
                   </div>
                   <div className="testimonial-content">
@@ -268,7 +320,11 @@ export default function TestimonialsSection() {
             {depoimentosFiltrados.map(depoimento => (
               <div key={depoimento.id} className="testimonial-card">
                 <div className="card-header">
-                  <img src={depoimento.foto} alt={depoimento.nome} className="avatar" />
+                  <OptimizedImage 
+                    src={depoimento.foto} 
+                    alt={depoimento.nome} 
+                    className="avatar"
+                  />
                   <div className="user-info">
                     <h4>{depoimento.nome}</h4>
                     <p className="profession">{depoimento.profissao}</p>
