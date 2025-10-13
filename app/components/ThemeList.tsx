@@ -1,6 +1,8 @@
+"use client";
+
 import React, { useState } from "react";
 import "./ThemeList.css";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 // Exemplo de dados com as imagens reais
 const todosOsTemas = [
@@ -91,21 +93,24 @@ const todosOsTemas = [
   {
     id: 13,
     titulo: "TDAH: Mitos e Verdades",
-    descricao: "Desvendando os equívocos mais comuns sobre o Transtorno de Déficit de Atenção e Hiperatividade.",
+    descricao:
+      "Desvendando os equívocos mais comuns sobre o Transtorno de Déficit de Atenção e Hiperatividade.",
     imagem: "/imagens/img13.jpg",
     link: "#"
   },
   {
     id: 14,
     titulo: "Autismo no Ambiente de Trabalho",
-    descricao: "Como empresas estão criando espaços mais inclusivos para profissionais autistas.",
+    descricao:
+      "Como empresas estão criando espaços mais inclusivos para profissionais autistas.",
     imagem: "/imagens/img14.jpg",
     link: "#"
   },
   {
     id: 15,
     titulo: "Dislexia e Criatividade",
-    descricao: "A conexão surpreendente entre pensamento não-linear e soluções inovadoras.",
+    descricao:
+      "A conexão surpreendente entre pensamento não-linear e soluções inovadoras.",
     imagem: "/imagens/img15.jpg",
     link: "#"
   }
@@ -114,16 +119,18 @@ const todosOsTemas = [
 export default function ThemeList() {
   const [mostrarTodos, setMostrarTodos] = useState(false);
   const temasVisiveis = mostrarTodos ? todosOsTemas : todosOsTemas.slice(0, 6);
-  const navigate = useNavigate();
-  
+  const router = useRouter();
+
   const handleVerMais = () => {
     setMostrarTodos(true);
   };
-  
+
   const handleVerMenos = () => {
     setMostrarTodos(false);
     // Rolagem suave para o topo da seção após ocultar temas
-    document.querySelector('.temas-populares').scrollIntoView({ behavior: 'smooth' });
+    document
+      .querySelector(".temas-populares")
+      .scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -144,7 +151,7 @@ export default function ThemeList() {
                   className="btn-tema"
                   onClick={() => {
                     // Navegar para a página e garantir scroll ao topo
-                    navigate('/artigo-premium');
+                    router.push("/artigo-premium");
                     // Backup: scroll ao topo após a navegação
                     setTimeout(() => {
                       window.scrollTo(0, 0);
@@ -157,18 +164,30 @@ export default function ThemeList() {
             </div>
           ))}
         </div>
-        
+
         <div className="botoes-controle">
           {!mostrarTodos ? (
-            <a href="#" className="btn-ver-mais" onClick={(e) => {
-              e.preventDefault();
-              handleVerMais();
-            }}>Mostrar mais</a>
+            <a
+              href="#"
+              className="btn-ver-mais"
+              onClick={(e) => {
+                e.preventDefault();
+                handleVerMais();
+              }}
+            >
+              Mostrar mais
+            </a>
           ) : (
-            <a href="#" className="btn-ver-menos" onClick={(e) => {
-              e.preventDefault();
-              handleVerMenos();
-            }}>Mostrar menos</a>
+            <a
+              href="#"
+              className="btn-ver-menos"
+              onClick={(e) => {
+                e.preventDefault();
+                handleVerMenos();
+              }}
+            >
+              Mostrar menos
+            </a>
           )}
         </div>
       </div>

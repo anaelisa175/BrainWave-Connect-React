@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import "./BackToTop.css";
 
@@ -17,7 +19,11 @@ export default function BackToTop() {
   };
 
   return visivel ? (
-    <button className="back-to-top" onClick={scrollToTop} title="Voltar ao topo">
+    <button
+      className="back-to-top"
+      onClick={scrollToTop}
+      title="Voltar ao topo"
+    >
       ↑
     </button>
   ) : null;

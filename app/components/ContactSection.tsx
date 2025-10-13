@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import "./ContactSection.css";
 
@@ -46,7 +48,9 @@ export default function ContactSection() {
             required
           ></textarea>
           <button type="submit">Enviar</button>
-          {enviado && <span className="mensagem-enviada">Mensagem enviada!</span>}
+          {enviado && (
+            <span className="mensagem-enviada">Mensagem enviada!</span>
+          )}
         </form>
       </div>
     </section>

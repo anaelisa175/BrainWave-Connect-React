@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import "./Quiz.css";
 
@@ -8,13 +10,16 @@ function Quiz() {
   const [showResult, setShowResult] = useState(false);
   const [answered, setAnswered] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
-  
+
   const questions = [
     {
       id: 1,
-      question: "1. O que significa o termo \"neurodivergente\"?",
+      question: '1. O que significa o termo "neurodivergente"?',
       options: [
-        { text: "Uma pessoa com funcionamento neurológico atípico", isCorrect: true },
+        {
+          text: "Uma pessoa com funcionamento neurológico atípico",
+          isCorrect: true
+        },
         { text: "Alguém com doenças mentais graves", isCorrect: false },
         { text: "Pessoas com QI acima da média", isCorrect: false },
         { text: "Indivíduos com lesões cerebrais", isCorrect: false }
@@ -22,7 +27,8 @@ function Quiz() {
     },
     {
       id: 2,
-      question: "2. Qual porcentagem da população estima-se ser neurodivergente?",
+      question:
+        "2. Qual porcentagem da população estima-se ser neurodivergente?",
       options: [
         { text: "5-10%", isCorrect: false },
         { text: "15-20%", isCorrect: true },
@@ -41,17 +47,17 @@ function Quiz() {
       ]
     }
   ];
-  
+
   const handleAnswer = (isCorrect, index) => {
     if (answered) return; // Evita múltiplos cliques
-    
+
     setSelectedOption(index);
     setAnswered(true);
-    
+
     if (isCorrect) {
       setScore(score + 1);
     }
-    
+
     // Avançar para próxima pergunta após 1.5 segundo
     setTimeout(() => {
       if (currentQuestion < questions.length - 1) {
@@ -63,7 +69,7 @@ function Quiz() {
       }
     }, 1500);
   };
-  
+
   const resetQuiz = () => {
     setCurrentQuestion(0);
     setScore(0);
@@ -71,7 +77,7 @@ function Quiz() {
     setAnswered(false);
     setSelectedOption(null);
   };
-  
+
   return (
     <>
       {!showResult ? (
@@ -79,40 +85,52 @@ function Quiz() {
           <h3>{questions[currentQuestion].question}</h3>
           <div className="quiz-options">
             {questions[currentQuestion].options.map((option, index) => (
-              <button 
-                key={index} 
+              <button
+                key={index}
                 onClick={() => handleAnswer(option.isCorrect, index)}
                 className={`quiz-option ${
-                  answered 
-                    ? option.isCorrect 
-                      ? "correct" 
-                      : selectedOption === index 
-                        ? "incorrect" 
-                        : ""
+                  answered
+                    ? option.isCorrect
+                      ? "correct"
+                      : selectedOption === index
+                      ? "incorrect"
+                      : ""
                     : ""
                 }`}
                 disabled={answered}
               >
-                <span className="option-letter">{String.fromCharCode(65 + index)}-</span>
+                <span className="option-letter">
+                  {String.fromCharCode(65 + index)}-
+                </span>
                 <span className="option-text">{option.text}</span>
               </button>
             ))}
           </div>
         </div>
       ) : (
-        <div className="quiz-result" style={{ textAlign: "center", padding: "30px 20px" }}>
-          <h3 style={{ fontSize: "1.5rem", marginBottom: "25px", color: "#333" }}>Resultado do Quiz</h3>
-          <p className="result-text" style={{ fontSize: "1.2rem", marginBottom: "25px" }}>
+        <div
+          className="quiz-result"
+          style={{ textAlign: "center", padding: "30px 20px" }}
+        >
+          <h3
+            style={{ fontSize: "1.5rem", marginBottom: "25px", color: "#333" }}
+          >
+            Resultado do Quiz
+          </h3>
+          <p
+            className="result-text"
+            style={{ fontSize: "1.2rem", marginBottom: "25px" }}
+          >
             Você acertou {score} de {questions.length} perguntas!
           </p>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <button 
-              onClick={resetQuiz} 
+            <button
+              onClick={resetQuiz}
               className="retry-button"
-              style={{ 
-                backgroundColor: "#ffc107", 
-                color: "#000", 
-                fontWeight: "bold", 
+              style={{
+                backgroundColor: "#ffc107",
+                color: "#000",
+                fontWeight: "bold",
                 border: "2px solid #071D3B",
                 padding: "10px 20px",
                 borderRadius: "4px",
@@ -121,7 +139,8 @@ function Quiz() {
               }}
               onMouseOver={(e) => {
                 e.currentTarget.style.backgroundColor = "#e6ad00";
-                e.currentTarget.style.boxShadow = "0 0 5px rgba(7, 29, 59, 0.7)";
+                e.currentTarget.style.boxShadow =
+                  "0 0 5px rgba(7, 29, 59, 0.7)";
               }}
               onMouseOut={(e) => {
                 e.currentTarget.style.backgroundColor = "#ffc107";
