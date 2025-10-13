@@ -1,0 +1,120 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// TABELAS CRÍTICAS PARA MVP
+// ============================================
+
+// 1. ARTIGOS - Coração do sistema
+model Artigo {
+  id                Int      @id @default(autoincrement())
+  titulo            String   @db.VarChar(200)
+  descricao         String?  @db.Text
+  conteudo          String   @db.LongText
+  imagemPrincipal   String?  @db.VarChar(255)
+  categoria         String?  @db.VarChar(50)
+  dataPublicacao    DateTime @default(now())
+  dataAtualizacao   DateTime @updatedAt
+  visualizacoes     Int      @default(0)
+  destaque          Boolean  @default(false)
+  
+  // Relacionamentos
+  perguntas         QuizPergunta[]
+  
+  @@map("artigos")
+  @@index([categoria])
+  @@index([dataPublicacao])
+  @@index([destaque])
+}
+
+// 2. CONTATOS - Captura de leads e feedback
+model Contato {
+  id          Int      @id @default(autoincrement())
+  nome        String   @db.VarChar(100)
+  email       String   @db.VarChar(150)
+  mensagem    String   @db.Text
+  dataEnvio   DateTime @default(now())
+  status      StatusContato @default(PENDENTE)
+  resposta    String?  @db.Text
+  dataResposta DateTime?
+  
+  @@map("contatos")
+  @@index([status])
+  @@index([dataEnvio])
+}
+
+enum StatusContato {
+  PENDENTE
+  LIDO
+  RESPONDIDO
+}
+
+// 3. FAQs - Perguntas Frequentes
+model FAQ {
+  id          Int      @id @default(autoincrement())
+  pergunta    String   @db.VarChar(255)
+  resposta    String   @db.Text
+  ordem       Int      @default(0)
+  ativo       Boolean  @default(true)
+  categoria   String?  @db.VarChar(50)
+  dataCriacao DateTime @default(now())
+  
+  @@map("faqs")
+  @@index([ativo])
+  @@index([ordem])
+}
+
+// 4. QUIZ - Perguntas dos quizzes
+model QuizPergunta {
+  id          Int      @id @default(autoincrement())
+  artigoId    Int?
+  pergunta    String   @db.Text
+  ordem       Int      @default(0)
+  
+  // Relacionamentos
+  artigo      Artigo?  @relation(fields: [artigoId], references: [id], onDelete: Cascade)
+  opcoes      QuizOpcao[]
+  
+  @@map("quiz_perguntas")
+  @@index([artigoId])
+}
+
+// 5. OPÇÕES DO QUIZ
+model QuizOpcao {
+  id          Int      @id @default(autoincrement())
+  perguntaId  Int
+  textoOpcao  String   @db.VarChar(255)
+  correta     Boolean  @default(false)
+  ordem       Int      @default(0)
+  
+  // Relacionamentos
+  pergunta    QuizPergunta @relation(fields: [perguntaId], references: [id], onDelete: Cascade)
+  
+  @@map("quiz_opcoes")
+  @@index([perguntaId])
+}
+
+// 6. HISTÓRICO DE BUSCAS - Analytics
+model BuscaHistorico {
+  id                   Int      @id @default(autoincrement())
+  termoBusca           String   @db.VarChar(255)
+  resultadoEncontrado  Boolean  @default(true)
+  quantidadeResultados Int      @default(0)
+  dataBusca            DateTime @default(now())
+  
+  @@map("busca_historico")
+  @@index([dataBusca])
+  @@index([termoBusca])
+}
