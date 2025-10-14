@@ -9,7 +9,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -20,39 +20,42 @@ datasource db {
 // 1. ARTIGOS - Coração do sistema
 model Artigo {
   id                Int      @id @default(autoincrement())
-  titulo            String   @db.VarChar(200)
-  descricao         String?  @db.Text
-  conteudo          String   @db.LongText
-  imagemPrincipal   String?  @db.VarChar(255)
-  categoria         String?  @db.VarChar(50)
+  titulo            String
+  slug              String   @unique
+  subtitulo         String?
+  descricao         String?
+  conteudo          String
+  componente        String   // Nome do componente React
+  imagemPrincipal   String?
+  imagemCapa        String?
+  categoria         String?
+  tags              String?  // JSON array de tags
+  autor             String   @default("BrainWave Connect")
   dataPublicacao    DateTime @default(now())
   dataAtualizacao   DateTime @updatedAt
   visualizacoes     Int      @default(0)
   destaque          Boolean  @default(false)
+  premium           Boolean  @default(false)
+  ativo             Boolean  @default(true)
   
   // Relacionamentos
   perguntas         QuizPergunta[]
   
   @@map("artigos")
-  @@index([categoria])
-  @@index([dataPublicacao])
-  @@index([destaque])
 }
 
 // 2. CONTATOS - Captura de leads e feedback
 model Contato {
   id          Int      @id @default(autoincrement())
-  nome        String   @db.VarChar(100)
-  email       String   @db.VarChar(150)
-  mensagem    String   @db.Text
+  nome        String
+  email       String
+  mensagem    String
   dataEnvio   DateTime @default(now())
   status      StatusContato @default(PENDENTE)
-  resposta    String?  @db.Text
+  resposta    String?
   dataResposta DateTime?
   
   @@map("contatos")
-  @@index([status])
-  @@index([dataEnvio])
 }
 
 enum StatusContato {
@@ -64,23 +67,21 @@ enum StatusContato {
 // 3. FAQs - Perguntas Frequentes
 model FAQ {
   id          Int      @id @default(autoincrement())
-  pergunta    String   @db.VarChar(255)
-  resposta    String   @db.Text
+  pergunta    String
+  resposta    String
   ordem       Int      @default(0)
   ativo       Boolean  @default(true)
-  categoria   String?  @db.VarChar(50)
+  categoria   String?
   dataCriacao DateTime @default(now())
   
   @@map("faqs")
-  @@index([ativo])
-  @@index([ordem])
 }
 
 // 4. QUIZ - Perguntas dos quizzes
 model QuizPergunta {
   id          Int      @id @default(autoincrement())
   artigoId    Int?
-  pergunta    String   @db.Text
+  pergunta    String
   ordem       Int      @default(0)
   
   // Relacionamentos
@@ -88,14 +89,13 @@ model QuizPergunta {
   opcoes      QuizOpcao[]
   
   @@map("quiz_perguntas")
-  @@index([artigoId])
 }
 
 // 5. OPÇÕES DO QUIZ
 model QuizOpcao {
   id          Int      @id @default(autoincrement())
   perguntaId  Int
-  textoOpcao  String   @db.VarChar(255)
+  textoOpcao  String
   correta     Boolean  @default(false)
   ordem       Int      @default(0)
   
@@ -103,18 +103,15 @@ model QuizOpcao {
   pergunta    QuizPergunta @relation(fields: [perguntaId], references: [id], onDelete: Cascade)
   
   @@map("quiz_opcoes")
-  @@index([perguntaId])
 }
 
 // 6. HISTÓRICO DE BUSCAS - Analytics
 model BuscaHistorico {
   id                   Int      @id @default(autoincrement())
-  termoBusca           String   @db.VarChar(255)
+  termoBusca           String
   resultadoEncontrado  Boolean  @default(true)
   quantidadeResultados Int      @default(0)
   dataBusca            DateTime @default(now())
   
   @@map("busca_historico")
-  @@index([dataBusca])
-  @@index([termoBusca])
 }
