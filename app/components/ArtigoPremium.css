@@ -237,10 +237,14 @@
 }
 
 .article-content img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin: 2rem 0;
+  width: 100%;
+  max-width: 800px;
+  height: 450px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+  margin: 2rem auto;
+  display: block;
   box-shadow: var(--shadow-md);
 }
 
@@ -477,4 +481,32 @@
   font-weight: bold;
   text-align: right;
   font-family: 'Montserrat', sans-serif;
+}
+
+/* Padronização de todas as imagens dentro dos artigos */
+.proposta-section img,
+.conclusao-section img,
+.curiosidade-item img,
+.highlight-box img {
+  width: 100%;
+  max-width: 800px;
+  height: 450px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+  margin: 2rem auto;
+  display: block;
+  box-shadow: var(--shadow-md);
+}
+
+/* Responsividade para imagens */
+@media (max-width: 768px) {
+  .article-content img,
+  .proposta-section img,
+  .conclusao-section img,
+  .curiosidade-item img,
+  .highlight-box img {
+    height: 250px;
+    max-width: 100%;
+  }
 }

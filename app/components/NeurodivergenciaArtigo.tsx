@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import Quiz from "./Quiz";
+import QuizDinamico from "./QuizDinamico";
 import ShareModal from "./ShareModal";
 import "./ArtigoPremium.css";
 
@@ -204,7 +204,7 @@ export default function NeurodivergenciaArtigo() {
           <section className="quiz-section animate__animated">
             <h2 className="proposta-title">Teste Seu Conhecimento</h2>
             <div className="quiz-container">
-              <Quiz />
+              <QuizDinamico artigoSlug="neurodivergencia-o-que-e-por-que-importa" />
             </div>
           </section>
 

@@ -39,7 +39,7 @@ model Artigo {
   ativo             Boolean  @default(true)
   
   // Relacionamentos
-  perguntas         QuizPergunta[]
+  quizzes           Quiz[]
   
   @@map("artigos")
 }
@@ -77,21 +77,44 @@ model FAQ {
   @@map("faqs")
 }
 
-// 4. QUIZ - Perguntas dos quizzes
-model QuizPergunta {
+// 4. QUIZ - Sistema completo de quizzes
+model Quiz {
   id          Int      @id @default(autoincrement())
-  artigoId    Int?
-  pergunta    String
-  ordem       Int      @default(0)
+  artigoId    Int
+  titulo      String
+  descricao   String?
+  ativo       Boolean  @default(true)
+  dataCriacao DateTime @default(now())
+  dataAtualizacao DateTime @updatedAt
   
   // Relacionamentos
-  artigo      Artigo?  @relation(fields: [artigoId], references: [id], onDelete: Cascade)
-  opcoes      QuizOpcao[]
+  artigo      Artigo   @relation(fields: [artigoId], references: [id], onDelete: Cascade)
+  perguntas   QuizPergunta[]
+  tentativas  QuizTentativa[]
   
-  @@map("quiz_perguntas")
+  @@map("quizzes")
+  @@index([artigoId])
 }
 
-// 5. OPÇÕES DO QUIZ
+// 5. PERGUNTAS DO QUIZ
+model QuizPergunta {
+  id          Int      @id @default(autoincrement())
+  quizId      Int
+  pergunta    String
+  ordem       Int      @default(0)
+  ativo       Boolean  @default(true)
+  
+  // Relacionamentos
+  quiz        Quiz     @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  opcoes      QuizOpcao[]
+  respostas   QuizResposta[]
+  
+  @@map("quiz_perguntas")
+  @@index([quizId])
+  @@index([ordem])
+}
+
+// 6. OPÇÕES DO QUIZ
 model QuizOpcao {
   id          Int      @id @default(autoincrement())
   perguntaId  Int
@@ -101,11 +124,53 @@ model QuizOpcao {
   
   // Relacionamentos
   pergunta    QuizPergunta @relation(fields: [perguntaId], references: [id], onDelete: Cascade)
+  respostas   QuizResposta[]
   
   @@map("quiz_opcoes")
+  @@index([perguntaId])
 }
 
-// 6. HISTÓRICO DE BUSCAS - Analytics
+// 7. TENTATIVAS DE QUIZ - Histórico de respostas
+model QuizTentativa {
+  id              Int      @id @default(autoincrement())
+  quizId          Int
+  sessionId       String?  // Para usuários não logados
+  pontuacao       Int      @default(0)
+  totalPerguntas  Int
+  tempoConclusao  Int?     // em segundos
+  completado      Boolean  @default(false)
+  dataTentativa   DateTime @default(now())
+  
+  // Relacionamentos
+  quiz            Quiz     @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  respostas       QuizResposta[]
+  
+  @@map("quiz_tentativas")
+  @@index([quizId])
+  @@index([sessionId])
+  @@index([dataTentativa])
+}
+
+// 8. RESPOSTAS DO USUÁRIO
+model QuizResposta {
+  id          Int      @id @default(autoincrement())
+  tentativaId Int
+  perguntaId  Int
+  opcaoId     Int
+  correta     Boolean  @default(false)
+  dataResposta DateTime @default(now())
+  
+  // Relacionamentos
+  tentativa   QuizTentativa @relation(fields: [tentativaId], references: [id], onDelete: Cascade)
+  pergunta    QuizPergunta @relation(fields: [perguntaId], references: [id])
+  opcao       QuizOpcao @relation(fields: [opcaoId], references: [id])
+  
+  @@map("quiz_respostas")
+  @@index([tentativaId])
+  @@index([perguntaId])
+}
+
+// 9. HISTÓRICO DE BUSCAS - Analytics
 model BuscaHistorico {
   id                   Int      @id @default(autoincrement())
   termoBusca           String

@@ -6,8 +6,6 @@ async function main() {
   console.log("🌱 Iniciando seed do banco de dados...");
 
   // Limpar dados existentes (opcional - comente se não quiser limpar)
-  await prisma.quizOpcao.deleteMany();
-  await prisma.quizPergunta.deleteMany();
   await prisma.artigo.deleteMany();
   await prisma.fAQ.deleteMany();
   await prisma.contato.deleteMany();
@@ -53,32 +51,31 @@ async function main() {
       autor: "BrainWave Connect",
       visualizacoes: 0,
       destaque: true,
-      premium: true,
+      premium: false,
       ativo: true
     }
   });
 
   const artigo3 = await prisma.artigo.create({
     data: {
-      titulo: "Autismo e Comunicação: Como Incluir?",
-      slug: "autismo-comunicacao-como-incluir",
-      subtitulo: "Estratégias para tornar o mundo mais acessível para autistas",
-      descricao: "Estratégias para tornar o mundo mais acessível para autistas.",
-      conteudo: `A comunicação é fundamental para a inclusão de pessoas autistas...`,
+      titulo: "Autismo e Comunicação: Além das Palavras",
+      slug: "autismo-comunicacao-alem-das-palavras",
+      subtitulo: "Compreendendo as diferentes formas de comunicação no autismo",
+      descricao: "Compreendendo as diferentes formas de comunicação no autismo.",
+      conteudo: `A comunicação no autismo vai muito além das palavras faladas...`,
       componente: "AutismoComunicacao",
       imagemPrincipal: "/imagens/img3.jpg",
       imagemCapa: "/imagens/img3.jpg",
       categoria: "Autismo",
-      tags: '["autismo", "comunicação", "inclusão", "acessibilidade"]',
+      tags: '["autismo", "comunicação", "linguagem", "interação social"]',
       autor: "BrainWave Connect",
       visualizacoes: 0,
-      destaque: false,
-      premium: true,
+      destaque: true,
+      premium: false,
       ativo: true
     }
   });
 
-  // Novos artigos adicionados
   const artigo4 = await prisma.artigo.create({
     data: {
       titulo: "TDAH na Vida Adulta: Navegando os Desafios",
@@ -221,36 +218,16 @@ async function main() {
 
   const artigo11 = await prisma.artigo.create({
     data: {
-      titulo: "Neurodivergência e Criatividade: Quando Diferenças Geram Inovação",
-      slug: "neurodivergencia-criatividade-diferencas-geram-inovacao",
-      subtitulo: "A conexão entre mentes neurodivergentes e criatividade",
-      descricao: "A conexão entre mentes neurodivergentes e criatividade.",
-      conteudo: `A conexão entre neurodivergência e criatividade é profunda e fascinante...`,
+      titulo: "Neurodivergência e Criatividade: Impulsionando a Inovação",
+      slug: "neurodivergencia-criatividade-impulsionando-inovacao",
+      subtitulo: "Como a neurodivergência impulsiona a inovação",
+      descricao: "Como a neurodivergência impulsiona a inovação.",
+      conteudo: `A relação entre neurodivergência e criatividade é uma das áreas mais fascinantes da pesquisa em neurociência moderna...`,
       componente: "NeurodivergenciaCriatividade",
-      imagemPrincipal: "/imagens/img5.jpg",
-      imagemCapa: "/imagens/img5.jpg",
-      categoria: "Criatividade",
-      tags: '["neurodivergência", "criatividade", "inovação", "arte"]',
-      autor: "BrainWave Connect",
-      visualizacoes: 0,
-      destaque: true,
-      premium: true,
-      ativo: true
-    }
-  });
-
-  const artigo12 = await prisma.artigo.create({
-    data: {
-      titulo: "Saúde Mental e Neurodivergência: Cuidado Integral e Inclusivo",
-      slug: "saude-mental-neurodivergencia-cuidado-integral",
-      subtitulo: "Abordagens de saúde mental para pessoas neurodivergentes",
-      descricao: "Abordagens de saúde mental para pessoas neurodivergentes.",
-      conteudo: `A saúde mental de pessoas neurodivergentes requer uma abordagem especializada...`,
-      componente: "SaudeMentalNeurodivergencia",
-      imagemPrincipal: "/imagens/img14.jpg",
-      imagemCapa: "/imagens/img14.jpg",
-      categoria: "Saúde Mental",
-      tags: '["saúde mental", "neurodivergência", "bem-estar", "terapia"]',
+      imagemPrincipal: "/imagens/img15.jpg",
+      imagemCapa: "/imagens/img15.jpg",
+      categoria: "Inovação",
+      tags: '["criatividade", "inovação", "neurodivergência", "potencial"]',
       autor: "BrainWave Connect",
       visualizacoes: 0,
       destaque: false,
@@ -259,7 +236,7 @@ async function main() {
     }
   });
 
-  const artigo13 = await prisma.artigo.create({
+  const artigo12 = await prisma.artigo.create({
     data: {
       titulo: "Dislexia e Criatividade: Transformando Desafios em Superpoderes",
       slug: "dislexia-criatividade-transformando-desafios-superpoderes",
@@ -279,81 +256,30 @@ async function main() {
     }
   });
 
-  console.log(`✅ ${12} artigos criados`);
-
-  // ============================================
-  // 2. CRIAR PERGUNTAS DE QUIZ
-  // ============================================
-  console.log("❓ Criando perguntas de quiz...");
-
-  const pergunta1 = await prisma.quizPergunta.create({
+  const artigo13 = await prisma.artigo.create({
     data: {
-      artigoId: artigo1.id,
-      pergunta: 'O que significa o termo "neurodivergente"?',
-      ordem: 1,
-      opcoes: {
-        create: [
-          {
-            textoOpcao: "Uma pessoa com funcionamento neurológico atípico",
-            correta: true,
-            ordem: 1
-          },
-          {
-            textoOpcao: "Alguém com doenças mentais graves",
-            correta: false,
-            ordem: 2
-          },
-          {
-            textoOpcao: "Pessoas com QI acima da média",
-            correta: false,
-            ordem: 3
-          },
-          {
-            textoOpcao: "Indivíduos com lesões cerebrais",
-            correta: false,
-            ordem: 4
-          }
-        ]
-      }
+      titulo: "Saúde Mental e Neurodivergência: Cuidado Integral",
+      slug: "saude-mental-neurodivergencia-cuidado-integral",
+      subtitulo: "Como cuidar da saúde mental em cérebros neurodivergentes",
+      descricao: "Abordagens para o cuidado integral da saúde mental em pessoas neurodivergentes.",
+      conteudo: `A saúde mental é fundamental para todos, mas para pessoas neurodivergentes, requer abordagens específicas...`,
+      componente: "SaudeMentalNeurodivergencia",
+      imagemPrincipal: "/imagens/img14.jpg",
+      imagemCapa: "/imagens/img14.jpg",
+      categoria: "Saúde Mental",
+      tags: '["saúde mental", "neurodivergência", "bem-estar", "cuidado integral"]',
+      autor: "BrainWave Connect",
+      visualizacoes: 0,
+      destaque: false,
+      premium: true,
+      ativo: true
     }
   });
 
-  const pergunta2 = await prisma.quizPergunta.create({
-    data: {
-      artigoId: artigo1.id,
-      pergunta: "Qual porcentagem da população estima-se ser neurodivergente?",
-      ordem: 2,
-      opcoes: {
-        create: [
-          { textoOpcao: "5-10%", correta: false, ordem: 1 },
-          { textoOpcao: "15-20%", correta: true, ordem: 2 },
-          { textoOpcao: "25-30%", correta: false, ordem: 3 },
-          { textoOpcao: "Menos de 5%", correta: false, ordem: 4 }
-        ]
-      }
-    }
-  });
-
-  const pergunta3 = await prisma.quizPergunta.create({
-    data: {
-      artigoId: artigo1.id,
-      pergunta: "Qual destes NÃO é um benefício comum da neurodivergência?",
-      ordem: 3,
-      opcoes: {
-        create: [
-          { textoOpcao: "Pensamento criativo", correta: false, ordem: 1 },
-          { textoOpcao: "Habilidade de hiperfoco", correta: false, ordem: 2 },
-          { textoOpcao: "Maior agressividade", correta: true, ordem: 3 },
-          { textoOpcao: "Atenção a detalhes", correta: false, ordem: 4 }
-        ]
-      }
-    }
-  });
-
-  console.log(`✅ ${3} perguntas de quiz criadas com ${12} opções`);
+  console.log(`✅ ${13} artigos criados`);
 
   // ============================================
-  // 3. CRIAR FAQs
+  // 2. CRIAR FAQs
   // ============================================
   console.log("❔ Criando FAQs...");
 
@@ -367,23 +293,23 @@ async function main() {
         ativo: true
       },
       {
-        pergunta: "O Brainwave Connect faz diagnósticos ou tratamentos?",
+        pergunta: "Quais assuntos são abordados no Brainwave Connect?",
         resposta:
-          "Não. O nosso papel é informar e orientar. Sempre indicamos que o diagnóstico e o acompanhamento devem ser feitos por profissionais de saúde especializados.",
+          "Abordamos temas como autismo, TDAH, dislexia, neurodiversidade em geral, estratégias de apoio, inclusão escolar e profissional, entre outros tópicos relevantes.",
         ordem: 2,
         ativo: true
       },
       {
-        pergunta: "Que tipo de conteúdo encontro por aqui?",
+        pergunta: "Como posso contribuir com o Brainwave Connect?",
         resposta:
-          "Você encontrará artigos, guias práticos, informações atualizadas, dicas para o dia a dia e materiais educativos sobre autismo, TDAH e temas relacionados.",
+          "Você pode compartilhar nosso conteúdo, enviar sugestões de temas ou entrar em contato para parcerias através do formulário de contato no site.",
         ordem: 3,
         ativo: true
       },
       {
-        pergunta: "Como posso apoiar ou participar?",
+        pergunta: "O conteúdo do site substitui orientação profissional?",
         resposta:
-          "Você pode compartilhar nossos conteúdos, indicar o Brainwave Connect para outras pessoas e, em breve, poderá se conectar em fóruns e projetos colaborativos.",
+          "Não. Nosso conteúdo é informativo e educacional, mas não substitui a orientação de profissionais de saúde qualificados para diagnóstico ou tratamento.",
         ordem: 4,
         ativo: true
       }
@@ -393,7 +319,7 @@ async function main() {
   console.log(`✅ ${4} FAQs criadas`);
 
   // ============================================
-  // 4. CRIAR CONTATO DE EXEMPLO
+  // 3. CRIAR CONTATO DE EXEMPLO
   // ============================================
   console.log("📧 Criando contato de exemplo...");
 
@@ -401,25 +327,19 @@ async function main() {
     data: {
       nome: "João Silva",
       email: "joao.silva@example.com",
-      mensagem: "Gostaria de saber mais sobre os recursos disponíveis no site.",
-      status: "PENDENTE"
+      mensagem: "Gostaria de sugerir um artigo sobre neurodivergência no ambiente de trabalho.",
+      status: "LIDO"
     }
   });
 
-  console.log(`✅ 1 contato de exemplo criado`);
+  console.log(`✅ Contato de exemplo criado`);
 
-  console.log("\n🎉 Seed concluído com sucesso!");
-  console.log("📊 Resumo:");
-  console.log(`   - Artigos: 12`);
-  console.log(`   - Perguntas de Quiz: 3`);
-  console.log(`   - Opções de Quiz: 12`);
-  console.log(`   - FAQs: 4`);
-  console.log(`   - Contatos: 1`);
+  console.log(`🎉 Seed concluído com sucesso!`);
 }
 
 main()
   .catch((e) => {
-    console.error("❌ Erro ao executar seed:", e);
+    console.error(e);
     process.exit(1);
   })
   .finally(async () => {
