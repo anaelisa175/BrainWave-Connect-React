@@ -79,15 +79,19 @@ export default function Header() {
           </h1>
         </Link>
         <nav className="menu">
-          <a href="#">Sobre</a>
-          <a href="#">Recursos</a>
-          <a href="#">Fóruns</a>
-          <a href="#">Jogos</a>
-          <a href="#">Contato</a>
+          <Link href="/sobre">Sobre</Link>
+          <Link href="/#temas-populares">Artigos</Link>
+          <Link href="/depoimentos">Depoimentos</Link>
+          <Link href="/jogos">Jogos</Link>
+          <Link href="/#contato">Contato</Link>
         </nav>
         <div className="auth-buttons">
-          <button className="auth-btn">Conecte-se</button>
-          <button className="auth-btn">Cadastrar</button>
+          <Link href="/login">
+            <button className="auth-btn">Conecte-se</button>
+          </Link>
+          <Link href="/cadastro">
+            <button className="auth-btn">Cadastrar</button>
+          </Link>
         </div>
       </div>
     </header>

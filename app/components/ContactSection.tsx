@@ -19,7 +19,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="contact-section" id="contact">
+    <section className="contact-section" id="contato">
       <div className="container">
         <h2>Fale Conosco</h2>
         <p>Tem alguma dúvida, sugestão ou feedback? Fale com a gente!</p>
@@ -44,7 +44,7 @@ export default function ContactSection() {
             placeholder="Sua mensagem"
             value={mensagem}
             onChange={(e) => setMensagem(e.target.value)}
-            rows="5"
+            rows={5}
             required
           ></textarea>
           <button type="submit">Enviar</button>

@@ -75,7 +75,7 @@ export default function ThemeList() {
   }
 
   return (
-    <section className="temas-populares">
+    <section className="temas-populares" id="temas-populares">
       <div className="container">
         <h2>Temas Populares</h2>
         <br></br>
