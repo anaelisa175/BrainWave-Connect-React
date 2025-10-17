@@ -2,6 +2,7 @@
 
 import Header from "./components/Header";
 import SearchSection from "./components/SearchSection";
+import ServicesSection from "./components/ServicesSection";
 import ThemeList from "./components/ThemeList";
 import RedacaoFAQ from "./components/RedacaoFAQ";
 import ContactSection from "./components/ContactSection";
@@ -13,6 +14,7 @@ export default function Home() {
     <>
       <Header />
       <SearchSection />
+      <ServicesSection />
       <div className="background-continuity">
         <ThemeList />
         <RedacaoFAQ />
