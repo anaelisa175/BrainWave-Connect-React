@@ -1,18 +1,7 @@
-<<<<<<<< HEAD:src/components/quiz/Quiz.jsx
-import React, { useState, useEffect, useRef } from "react";
-import { quizData } from "../../data/quizData";
-
-// Função para garantir a letra correta
-const getLetter = (index) => {
-  const letters = ['A', 'B', 'C', 'D'];
-  return letters[index] || 'A';
-};
-========
 "use client";
 
 import React, { useState } from "react";
 import "./Quiz.css";
->>>>>>>> 6c848549aa802c33b07f40799d53f18456de1dbb:app/components/Quiz.tsx
 
 // Componente de Quiz Interativo
 function Quiz({ quizType = 'default' }) {
@@ -21,13 +10,6 @@ function Quiz({ quizType = 'default' }) {
   const [showResult, setShowResult] = useState(false);
   const [answered, setAnswered] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
-<<<<<<<< HEAD:src/components/quiz/Quiz.jsx
-  const optionRefs = useRef([]);
-  
-  // Busca as perguntas baseadas no tipo de quiz
-  const questions = quizData[quizType] || quizData.default;
-  
-========
 
   const questions = [
     {
@@ -66,7 +48,6 @@ function Quiz({ quizType = 'default' }) {
     }
   ];
 
->>>>>>>> 6c848549aa802c33b07f40799d53f18456de1dbb:app/components/Quiz.tsx
   const handleAnswer = (isCorrect, index) => {
     if (answered) return; // Evita múltiplos cliques
 
@@ -97,43 +78,12 @@ function Quiz({ quizType = 'default' }) {
     setSelectedOption(null);
   };
 
-<<<<<<<< HEAD:src/components/quiz/Quiz.jsx
-  // Removed DOM manipulation to fix hydration issues
-  
-========
->>>>>>>> 6c848549aa802c33b07f40799d53f18456de1dbb:app/components/Quiz.tsx
   return (
     <>
       {!showResult ? (
         <div className="quiz-question active">
           <h3>{questions[currentQuestion].question}</h3>
           <div className="quiz-options">
-<<<<<<<< HEAD:src/components/quiz/Quiz.jsx
-            {questions[currentQuestion].options.map((option, index) => {
-              const letter = ['A', 'B', 'C', 'D'][index];
-              return (
-                <button 
-                  key={`${currentQuestion}-${index}`} 
-                  onClick={() => handleAnswer(option.isCorrect, index)}
-                  className={`quiz-option ${
-                    answered 
-                      ? option.isCorrect 
-                        ? "correct" 
-                        : selectedOption === index 
-                          ? "incorrect" 
-                          : ""
-                      : ""
-                  }`}
-                  disabled={answered}
-                >
-                  <span className="option-letter" key={`letter-${currentQuestion}-${index}`}>
-                    {letter}-
-                  </span>
-                  <span className="option-text">{option.text}</span>
-                </button>
-              );
-            })}
-========
             {questions[currentQuestion].options.map((option, index) => (
               <button
                 key={index}
@@ -155,7 +105,6 @@ function Quiz({ quizType = 'default' }) {
                 <span className="option-text">{option.text}</span>
               </button>
             ))}
->>>>>>>> 6c848549aa802c33b07f40799d53f18456de1dbb:app/components/Quiz.tsx
           </div>
         </div>
       ) : (

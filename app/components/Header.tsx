@@ -1,12 +1,9 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-<<<<<<<< HEAD:src/components/layout/Header.jsx
-========
 import Link from "next/link";
 import Image from "next/image";
 import "./Header.css";
->>>>>>>> 6c848549aa802c33b07f40799d53f18456de1dbb:app/components/Header.tsx
 
 export default function Header() {
   const h1Ref = useRef(null);
@@ -82,20 +79,11 @@ export default function Header() {
           </h1>
         </Link>
         <nav className="menu">
-<<<<<<<< HEAD:src/components/layout/Header.jsx
-          <a href="#">Sobre</a>
-          <a href="#">Recursos</a>
-          <a href="#">Fóruns</a>
-          <a href="/depoimentos">Depoimentos</a>
-          <a href="#">Jogos</a>
-          <a href="#">Contato</a>
-========
           <Link href="/sobre">Sobre</Link>
           <Link href="/#temas-populares">Artigos</Link>
           <Link href="/depoimentos">Depoimentos</Link>
           <Link href="/jogos">Jogos</Link>
           <Link href="/#contato">Contato</Link>
->>>>>>>> 6c848549aa802c33b07f40799d53f18456de1dbb:app/components/Header.tsx
         </nav>
         <div className="auth-buttons">
           <Link href="/login">

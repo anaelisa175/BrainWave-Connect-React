@@ -6,6 +6,15 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+/* Força todos os links do footer a serem brancos */
+.footer a,
+.footer a:link,
+.footer a:visited,
+.footer a:active {
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
 /* Container comum */
 .footer-container {
     max-width: 1200px;
@@ -65,7 +74,7 @@
 }
 
 .footer-section ul li a {
-    color: #ffffff;
+    color: #ffffff !important;
     opacity: 0.8;
     text-decoration: none;
     font-size: 0.9rem;
@@ -81,9 +90,20 @@
 }
 
 .footer-section ul li a:hover {
-    color: #F6B600;
+    color: #F6B600 !important;
     opacity: 1;
     transform: translateX(3px);
+}
+
+/* Regras adicionais para garantir links brancos */
+.footer-section a,
+.footer-section a:link,
+.footer-section a:visited {
+    color: #ffffff !important;
+}
+
+.footer-section a:hover {
+    color: #F6B600 !important;
 }
 
 /* Parte inferior do footer */
@@ -155,7 +175,7 @@
 }
 
 .footer-links a {
-    color: #F6B600;
+    color: #ffffff !important;
     text-decoration: none;
     font-size: 0.88rem;
     transition: color 0.3s ease;
@@ -163,7 +183,7 @@
 }
 
 .footer-links a:hover {
-    color: #ffffff;
+    color: #F6B600 !important;
     opacity: 1;
 }
 
